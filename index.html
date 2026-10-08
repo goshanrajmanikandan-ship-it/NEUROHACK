@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEUROHACK — Cognitive Performance Lab</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div class="grid"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <span class="logo-icon">◈</span>
+            NEURO<span>HACK</span>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
+        </div>
+    </header>
+
+
+    <!-- HOME -->
+    <main id="home" class="screen active">
+
+        <div class="hero">
+
+            <div class="eyebrow">
+                COGNITIVE PERFORMANCE LAB // 01
+            </div>
+
+            <h1>
+                TEST YOUR<br>
+                <span>NEURAL</span> LIMITS.
+            </h1>
+
+            <p class="hero-text">
+                Five cognitive challenges. One final score.
+                Discover how fast your mind really works.
+            </p>
+
+            <button class="primary-btn" onclick="startTest()">
+                <span>INITIALIZE TEST</span>
+                <span class="arrow">→</span>
+            </button>
+
+            <div class="stats-preview">
+
+                <div>
+                    <strong>05</strong>
+                    <small>CHALLENGES</small>
+                </div>
+
+                <div>
+                    <strong>∞</strong>
+                    <small>REPLAYS</small>
+                </div>
+
+                <div>
+                    <strong>100%</strong>
+                    <small>VANILLA JS</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- GAME SELECT -->
+    <section id="select" class="screen">
+
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">NEUROHACK PROTOCOL</div>
+                <h2>COGNITIVE <span>SEQUENCE</span></h2>
+            </div>
+
+            <div class="progress-text">
+                <span id="challengeNumber">01</span> / 05
+            </div>
+        </div>
+
+        <div class="challenge-card">
+
+            <div class="challenge-number" id="challengeBigNumber">
+                01
+            </div>
+
+            <div class="challenge-info">
+
+                <div class="challenge-tag" id="challengeTag">
+                    REFLEX
+                </div>
+
+                <h3 id="challengeTitle">
+                    REACTION
+                </h3>
+
+                <p id="challengeDescription">
+                    Test how quickly your nervous system responds
+                    to a visual stimulus.
+                </p>
+
+                <button class="primary-btn small" onclick="beginChallenge()">
+                    BEGIN →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GAME -->
+    <section id="game" class="screen">
+
+        <div class="game-top">
+
+            <div>
+                <div class="eyebrow" id="gameCategory">
+                    REFLEX TEST
+                </div>
+
+                <h2 id="gameTitle">
+                    REACTION
+                </h2>
+            </div>
+
+            <div class="timer">
+                <span id="timer">30</span>
+                SEC
+            </div>
+
+        </div>
+
+
+        <!-- Reaction Game -->
+        <div id="reactionGame" class="game-area">
+
+            <div class="reaction-box" id="reactionBox" onclick="reactionClick()">
+
+                <div id="reactionText">
+                    WAIT FOR GREEN
+                </div>
+
+            </div>
+
+            <p class="instruction">
+                Click only when the signal turns green.
+            </p>
+
+        </div>
+
+
+        <!-- Memory Game -->
+        <div id="memoryGame" class="game-area hidden">
+
+            <div class="memory-info">
+                MEMORIZE THE PATTERN
+            </div>
+
+            <div class="memory-grid" id="memoryGrid"></div>
+
+        </div>
+
+
+        <!-- Number Game -->
+        <div id="numberGame" class="game-area hidden">
+
+            <div class="number-display" id="numberDisplay">
+                48291
+            </div>
+
+            <input
+                type="text"
+                id="numberInput"
+                class="number-input"
+                placeholder="ENTER NUMBER"
+                autocomplete="off"
+            >
+
+            <button class="primary-btn small" onclick="checkNumber()">
+                SUBMIT →
+            </button>
+
+        </div>
+
+
+        <!-- Precision Game -->
+        <div id="precisionGame" class="game-area hidden">
+
+            <div class="precision-board" id="precisionBoard">
+
+                <div class="target" id="target"></div>
+
+            </div>
+
+            <div class="score-display">
+                HITS:
+                <span id="precisionScore">0</span>
+            </div>
+
+        </div>
+
+
+        <!-- Focus Game -->
+        <div id="focusGame" class="game-area hidden">
+
+            <div class="focus-instruction">
+                FIND THE DIFFERENT SYMBOL
+            </div>
+
+            <div class="focus-grid" id="focusGrid"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULTS -->
+    <section id="results" class="screen">
+
+        <div class="results-container">
+
+            <div class="eyebrow">
+                NEURAL ANALYSIS COMPLETE
+            </div>
+
+            <h2>
+                YOUR <span>NEURO PROFILE</span>
+            </h2>
+
+            <div class="score-circle">
+
+                <div>
+                    <span id="finalScore">0</span>
+                    <small>SCORE</small>
+                </div>
+
+            </div>
+
+            <div class="result-grid">
+
+                <div class="result-card">
+                    <span>⚡</span>
+                    <strong id="reactionResult">--</strong>
+                    <small>REACTION</small>
+                </div>
+
+                <div class="result-card">
+                    <span>🧠</span>
+                    <strong id="memoryResult">--</strong>
+                    <small>MEMORY</small>
+                </div>
+
+                <div class="result-card">
+                    <span>🎯</span>
+                    <strong id="precisionResult">--</strong>
+                    <small>PRECISION</small>
+                </div>
+
+                <div class="result-card">
+                    <span>👁</span>
+                    <strong id="focusResult">--</strong>
+                    <small>FOCUS</small>
+                </div>
+
+            </div>
+
+            <div class="rank" id="rank">
+                ELITE
+            </div>
+
+            <p id="resultMessage">
+                Your neural performance has been analyzed.
+            </p>
+
+            <button class="primary-btn" onclick="restartTest()">
+                RUN AGAIN ↻
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        NEUROHACK © 2026
+        <span>COGNITIVE PERFORMANCE SYSTEM</span>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
